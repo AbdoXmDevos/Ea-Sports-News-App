@@ -43,7 +43,7 @@
             android:id="@+id/textView2"
             android:layout_width="300dp"
             android:layout_height="20dp"
-            android:text="Team Of The Week"
+            android:text="Team Of The Week 3"
             android:textAlignment="center"
             android:fontFamily="@font/gunters"
             android:textColor="@color/white"
