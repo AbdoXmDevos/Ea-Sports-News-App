@@ -17,6 +17,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_main.recyclerView
+import java.util.Collections
 
 private lateinit var database: DatabaseReference
 
@@ -35,12 +36,12 @@ class MainActivity : AppCompatActivity() {
                     for (postSnapshot in dataSnapshot.children) {
                         var data = postSnapshot.getValue(ModelNews::class.java)
                         var th = data!!.image
-                        if (th.contains(".jpg")) {
-                            th = th.replace(".jpg", "l.jpg")
-                        } else if (th.contains(".png")) {
-                            th = th.replace(".png", "l.png")
+                        if (th.contains("=medium")) {
+                            th = th.replace("=medium", "=small")
+                        } else if (th.contains("=large")) {
+                            th = th.replace("=large", "=small")
                         }
-                        list.add(data!!)
+                        list.add(0,data!!)
                     }
                     recyclerView.layoutManager = LinearLayoutManager(this@MainActivity)
                     recyclerView.adapter = NewsAdapter(
@@ -51,7 +52,7 @@ class MainActivity : AppCompatActivity() {
                                 Intent(
                                     this@MainActivity,
                                     NewsActivity::class.java
-                                )
+                                ).putExtra("id",it.id.toString())
                             )
                         }
                     )
