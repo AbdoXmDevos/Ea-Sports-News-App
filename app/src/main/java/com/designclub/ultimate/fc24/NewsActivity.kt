@@ -19,6 +19,10 @@ class NewsActivity : AppCompatActivity() {
         previewAll.visibility = View.GONE
         progress.visibility = View.VISIBLE
 
+        back.setOnClickListener{
+            finish()
+        }
+
         Glide.with(this)
             .load("https://pbs.twimg.com/media/F8Vb9--WEAAGKhf?format=jpg&name=medium")
             .fitCenter()
