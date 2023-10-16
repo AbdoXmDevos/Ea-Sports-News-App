@@ -1,2 +1,2 @@
 # Ea-Sports-News-App
-<h>hello</h>
+<h1>hello</h1>
