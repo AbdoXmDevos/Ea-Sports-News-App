@@ -213,6 +213,7 @@ class ZoomableImageView : AppCompatImageView, View.OnTouchListener,
         onDoubleTap
      */
     override fun onSingleTapConfirmed(motionEvent: MotionEvent): Boolean {
+
         return false
     }
 

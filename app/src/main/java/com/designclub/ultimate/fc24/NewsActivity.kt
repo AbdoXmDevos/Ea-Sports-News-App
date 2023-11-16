@@ -104,7 +104,27 @@ class NewsActivity : AppCompatActivity() {
                     .into(preview)
             }
             textNews1.text = it.child("text1").value.toString().replace("\\n","\n")
+            if (it.child("image1").exists()){
+                Glide.with(this)
+                    .load(it.child("image1").value.toString())
+                    .fitCenter()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .priority(Priority.HIGH)
+                    .into(imageView2)
+            }else{
+                imageView2.visibility = View.GONE
+            }
             textNews2.text = it.child("text2").value.toString().replace("\\n","\n")
+            if (it.child("image2").exists()){
+                Glide.with(this)
+                    .load(it.child("image2").value.toString())
+                    .fitCenter()
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .priority(Priority.HIGH)
+                    .into(imageView4)
+            }else{
+                imageView4.visibility = View.GONE
+            }
             textNews3.text = it.child("text3").value.toString().replace("\\n","\n")
         }
 

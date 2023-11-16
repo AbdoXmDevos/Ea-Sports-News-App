@@ -42,15 +42,25 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.HolderNews> {
         val title = model.title
         val new = model.new
         val image = model.image
+        val category = model.category
 
 
         Glide.with(context)
             .load(image)
-            .centerCrop()
+            .override(330,270)
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .priority(Priority.HIGH)
             .into(holder.news_image)
         holder.news_title.text = title
+        if (category == "Ultimate team News"){
+            holder.icon.setImageResource(R.drawable.notif_ic)
+        }else if (category == "Giveaway"){
+            holder.icon.setImageResource(R.drawable.gift_ic)
+        }else if (category == "Leaks"){
+            holder.icon.setImageResource(R.drawable.leak_ic)
+        }else{
+            holder.icon.visibility = View.GONE
+        }
 
         holder.root.setOnClickListener{
             mClickListener(model)
@@ -64,6 +74,7 @@ class NewsAdapter : RecyclerView.Adapter<NewsAdapter.HolderNews> {
 
     inner class HolderNews(itemView: View): RecyclerView.ViewHolder(itemView){
         var news_title = binding.titleCard
+        var icon = binding.iconCategory
         var root = itemView.rootView
         var news_image = binding.imageCard
         var new_news = binding.newNews
